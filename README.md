@@ -4,5 +4,4 @@ A web-based Java 8 Spark application for conference paper submissions. Freemarke
 
 # Contributors
 
-Jeff Palmerino
-Hiten Gupta
+Jeff Palmerino, Hiten Gupta
