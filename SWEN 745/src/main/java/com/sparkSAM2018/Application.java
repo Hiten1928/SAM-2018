@@ -49,7 +49,7 @@ public final class Application {
 
         // create the one and only checkers center
 
-        final SAMCenter checkersCenter = new SAMCenter();
+        final SAMCenter samCenter = new SAMCenter();
 
         // The application uses FreeMarker templates to generate the HTML
         // responses sent back to the client. This will be the engine processing
@@ -57,7 +57,7 @@ public final class Application {
         final TemplateEngine templateEngine = new FreeMarkerEngine();
 
         // inject the game center and freemarker engine into web server
-        final WebServer webServer = new WebServer(checkersCenter,templateEngine);
+        final WebServer webServer = new WebServer(samCenter,templateEngine);
 
         // inject web server into application
         final Application app = new Application(webServer);
