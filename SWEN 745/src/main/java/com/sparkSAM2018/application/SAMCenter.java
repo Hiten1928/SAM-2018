@@ -16,6 +16,11 @@ public class SAMCenter {
     // attributes
     //
 
+    private List<String> authorUsernames = new ArrayList<>();
+    private List<String> pcmUsernames = new ArrayList<>();
+    private List<String> pccUsernames = new ArrayList<>();
+
+    private String administratorName = "Administrator";
 
     //
     // constructor
@@ -65,5 +70,20 @@ public class SAMCenter {
         }
     }
 
+    public List getAuthorUsernameList() {
+        return authorUsernames;
+    }
+
+    public List getPCMUsernameList() {
+        return pcmUsernames;
+    }
+
+    public List getPCCUsernameList() {
+        return pccUsernames;
+    }
+
+    public String getAdministratorName(){
+        return administratorName;
+    }
 }
 
