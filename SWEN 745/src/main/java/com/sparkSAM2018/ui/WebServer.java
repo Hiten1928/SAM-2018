@@ -134,7 +134,11 @@ public class WebServer {
         //GET
         get(HOME_URL, new GetHomeRoute(), templateEngine);
         get(SIGNIN_URL, new GetSigninRoute(), templateEngine);
+        get("/registration", new GetRegistrationRoute(), templateEngine);
 
+        //POST
+        post("/name", new PostNameRoute(), templateEngine);
+        post("/registrationPost", new PostRegistrationRoute(), templateEngine);
 
     }
 }

@@ -1,10 +1,14 @@
 package com.sparkSAM2018.ui;
 
-import spark.*;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.TemplateViewRoute;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class GetHomeRoute implements TemplateViewRoute {
+public class GetRegistrationRoute implements TemplateViewRoute {
 
     static final String TITLE = "Software Architecture Mining";
     /**
@@ -16,6 +20,6 @@ public class GetHomeRoute implements TemplateViewRoute {
         vm.put("title", TITLE);
 
 
-        return new ModelAndView(vm, "home.ftl");
+        return new ModelAndView(vm, "registration.ftl");
     }
 }
