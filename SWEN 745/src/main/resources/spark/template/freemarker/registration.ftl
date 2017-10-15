@@ -17,24 +17,22 @@
                 <a href="/signin">Sign In</a>
             </div>
 
-            <h3> Welcome conference member! Enter your login information below. </h3>
+            <h3> Thank you for choosing to register with SAM 2018! </h3>
 
             <div>
-                Not signed up? Register with the conference through <a href="/registration">this</a> link!
-            </div><br /><br />
-
-            Member Type:
-            <form action="/name" method="POST">
+                Please identify your member type below.
+            </div>
+            <form action="/registrationPost" method="POST">
                 <div>
                     <input type="radio" name="memberType" value="author"> Author </input>
                     <input type="radio" name="memberType" value="pcm"> Program Committee Member </input>
                     <input type="radio" name="memberType" value="pcc"> Program Committee Chair </input>
-                    <input type="radio" name="memberType" value="administrator"> Administrator </input>
-                </div>
+                </div><br /><br />
+
+                Please enter your desired username below.
 
                 <br/>
-                Username: <br />
-                <input name="username" />
+                Username: <input name="username" />
                 <br/>
 
                 <div>
@@ -43,20 +41,8 @@
                     </#if>
                 </div><br />
 
-                <button type="submit"> Sign In </button>
+                <button type="submit"> Register </button>
             </form>
-
-            <#if authornames??>
-                <ol>
-                    <#list authornames as n>
-                        <li>${n}</li>
-                    </#list>
-                </ol>
-            </#if>
-
-            <#if author??>
-                Author List size: ${author}
-            </#if>
 
         </div>
 

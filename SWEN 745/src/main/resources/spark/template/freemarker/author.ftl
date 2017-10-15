@@ -11,12 +11,14 @@
 
             <div class="navigation">
                 <a href="/">Home Page</a> -
-                <a href="/signin">Sign In</a>
+                <a href="/submitPaper">Submit Paper</a> -
+                <a href="/reviewSubmissions">Review Submissions</a> -
+                <a href="/signout">Sign Out</a>
             </div><br /><br />
 
             <h2>
                 <div class="body">
-                    Welcome to SAM 2018! Located in Rochester, New York!
+                    Author Page
                 </div>
             </h2>
 

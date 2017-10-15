@@ -11,12 +11,14 @@
 
             <div class="navigation">
                 <a href="/">Home Page</a> -
-                <a href="/signin">Sign In</a>
+                <a href="/assignPapers">Assign Papers</a> -
+                <a href="/reviewedPapers">Reviewed Papers</a> -
+                <a href="/signout">Sign Out</a>
             </div><br /><br />
 
             <h2>
                 <div class="body">
-                    Welcome to SAM 2018! Located in Rochester, New York!
+                    PCC Page
                 </div>
             </h2>
 
