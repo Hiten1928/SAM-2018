@@ -49,6 +49,9 @@ public class WebServer {
      * The URL patterns to request pages
      */
 
+    public static final String HOME_URL = "/";
+    public static final String SIGNIN_URL = "/signin";
+
 
     //
     // Attributes
@@ -129,8 +132,13 @@ public class WebServer {
 
 
         //GET
-        get("/", new GetHomeRoute(), templateEngine);
+        get(HOME_URL, new GetHomeRoute(), templateEngine);
+        get(SIGNIN_URL, new GetSigninRoute(), templateEngine);
+        get("/registration", new GetRegistrationRoute(), templateEngine);
 
+        //POST
+        post("/name", new PostNameRoute(samCenter), templateEngine);
+        post("/registrationPost", new PostRegistrationRoute(samCenter), templateEngine);
 
     }
 }
