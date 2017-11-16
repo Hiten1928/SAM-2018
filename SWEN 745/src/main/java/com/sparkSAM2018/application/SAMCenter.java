@@ -16,6 +16,11 @@ public class SAMCenter {
     // attributes
     //
 
+    private List<String> authorUsernames = new ArrayList<>();
+    private List<String> pcmUsernames = new ArrayList<>();
+    private List<String> pccUsernames = new ArrayList<>();
+
+    private String administratorName = "Administrator";
 
     //
     // constructor
@@ -24,28 +29,6 @@ public class SAMCenter {
     public SAMCenter() {
 
     }
-
-
-    /**
-     * Get the {@linkplain //CheckersGame game} for the current user
-     *
-     * @param session
-     *   The HTTP session
-     *
-     * @return
-     *   A existing or new {@link //CheckersGame}
-     */
-    /*public CheckersGame get(final Session session) {
-        // validation
-        Objects.requireNonNull(session, "session must not be null");
-        CheckersGame game = session.attribute("checkGame");
-        if (game == null) {
-            // create new game
-            game = new CheckersGame();
-            session.attribute("checkGame", game);
-        }
-        return game;
-    }*/
 
     /**
      * Ends the user's session, freeing up their name and logging them out
@@ -65,5 +48,20 @@ public class SAMCenter {
         }
     }
 
+    public List getAuthorUsernameList() {
+        return authorUsernames;
+    }
+
+    public List getPCMUsernameList() {
+        return pcmUsernames;
+    }
+
+    public List getPCCUsernameList() {
+        return pccUsernames;
+    }
+
+    public String getAdministratorName(){
+        return administratorName;
+    }
 }
 
