@@ -1,6 +1,9 @@
 package com.sparkSAM2018.application;
 
-//import com.sparkSAM2018.model.SAMGame;
+import com.sparkSAM2018.model.Author;
+import com.sparkSAM2018.model.PCC;
+import com.sparkSAM2018.model.PCM;
+import com.sparkSAM2018.model.Paper;
 import spark.Request;
 import spark.Session;
 import java.util.*;
@@ -16,9 +19,10 @@ public class SAMCenter {
     // attributes
     //
 
-    private List<String> authorUsernames = new ArrayList<>();
-    private List<String> pcmUsernames = new ArrayList<>();
-    private List<String> pccUsernames = new ArrayList<>();
+    private List<Author> authorUsernames = new ArrayList<>();
+    private List<PCM> pcmUsernames = new ArrayList<>();
+    private List<PCC> pccUsernames = new ArrayList<>();
+    private List<Paper> submittedPapers = new ArrayList();
 
     private String administratorName = "Administrator";
 
@@ -48,20 +52,55 @@ public class SAMCenter {
         }
     }
 
-    public List getAuthorUsernameList() {
+    public List<Author> getAuthorUsernameList() {
         return authorUsernames;
     }
 
-    public List getPCMUsernameList() {
+    public List<PCM> getPCMUsernameList() {
         return pcmUsernames;
     }
 
-    public List getPCCUsernameList() {
+    public List<PCC> getPCCUsernameList() {
         return pccUsernames;
     }
 
     public String getAdministratorName(){
         return administratorName;
+    }
+
+    public List<Paper> getSubmittedPapers(){
+        return submittedPapers;
+    }
+
+    public boolean getSomething(String name, String type){
+        switch(type){
+            case "author":
+                for (Author author: authorUsernames) {
+                    if(author.hasAuthor(name)){
+                        return true;
+                    }
+                }
+                break;
+            case "pcm":
+                for (PCM pcm: pcmUsernames) {
+                    if(pcm.hasPCM(name)){
+                        return true;
+                    }
+                }
+                break;
+            case "pcc":
+                for (PCC pcc: pccUsernames) {
+                    if(pcc.hasPCC(name)){
+                        return true;
+                    }
+                }
+                break;
+        }
+        return false;
+    }
+
+    public void sendSubmissionNotification(){
+
     }
 }
 
