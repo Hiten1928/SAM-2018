@@ -20,6 +20,7 @@ import com.sparkSAM2018.ui.WebServer;
  */
 public final class Application {
     private static final Logger LOG = Logger.getLogger(Application.class.getName());
+    public static String pathReference;
 
     //
     // Application Launch method
@@ -47,6 +48,7 @@ public final class Application {
             System.err.println("Could not initialize log manager because: " + e.getMessage());
         }*/
 
+        pathReference = System.getProperty("user.dir");
         // create the one and only sam center
         final SAMCenter samCenter = new SAMCenter();
 
