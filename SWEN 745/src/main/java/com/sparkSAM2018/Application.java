@@ -8,6 +8,9 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import com.sparkSAM2018.application.SAMCenter;
+import com.sparkSAM2018.model.Author;
+import com.sparkSAM2018.model.PCM;
+import com.sparkSAM2018.model.Paper;
 import spark.TemplateEngine;
 import spark.template.freemarker.FreeMarkerEngine;
 import com.sparkSAM2018.ui.WebServer;
@@ -51,6 +54,13 @@ public final class Application {
         pathReference = System.getProperty("user.dir");
         // create the one and only sam center
         final SAMCenter samCenter = new SAMCenter();
+        samCenter.getSubmittedPapers().add(new Paper(new Author("Jeff"),"hey hey", 3));
+        samCenter.getSubmittedPapers().add(new Paper(new Author("Jeff"),"hey hey", 3));
+        samCenter.getSubmittedPapers().add(new Paper(new Author("Jeff"),"hey hey", 3));
+        samCenter.getSubmittedPapers().add(new Paper(new Author("Jeff"),"hey hey", 3));
+        samCenter.getAuthorUsernameList().add(new Author("jeff"));
+        samCenter.getPCMUsernameList().add(new PCM("alsojeff"));
+
 
         // The application uses FreeMarker templates to generate the HTML
         // responses sent back to the client. This will be the engine processing
