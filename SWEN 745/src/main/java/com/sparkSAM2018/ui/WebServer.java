@@ -51,7 +51,12 @@ public class WebServer {
 
     public static final String HOME_URL = "/";
     public static final String SIGNIN_URL = "/signin";
+    public static final String REGISTRATION_URL = "/registration";
 
+    public static final String AUTHOR_URL = "/author";
+    public static final String PCM_URL = "/pcm";
+    public static final String PCC_URL = "/pcc";
+    public static final String ADMIN_URL = "/admin";
 
     //
     // Attributes
@@ -134,11 +139,20 @@ public class WebServer {
         //GET
         get(HOME_URL, new GetHomeRoute(), templateEngine);
         get(SIGNIN_URL, new GetSigninRoute(), templateEngine);
-        get("/registration", new GetRegistrationRoute(), templateEngine);
+        get(REGISTRATION_URL, new GetRegistrationRoute(), templateEngine);
+
+        get(AUTHOR_URL, new GetAuthorRoute(samCenter), templateEngine);
+        get(PCM_URL, new GetPCMRoute(samCenter), templateEngine);
+        get(PCC_URL, new GetPCCRoute(samCenter), templateEngine);
+        get("/submittedPapers", new GetSubmittedPapersRoute(samCenter), templateEngine);
+        //get(ADMIN_URL, new GetAdminRoute(samCenter), templateEngine);
+
+        get("/submitPaper", new GetSubmitPaperRoute(samCenter), templateEngine);
 
         //POST
         post("/name", new PostNameRoute(samCenter), templateEngine);
         post("/registrationPost", new PostRegistrationRoute(samCenter), templateEngine);
+        post("/postPaper", new PostPaperRoute(samCenter), templateEngine);
 
     }
 }

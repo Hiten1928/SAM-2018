@@ -2,6 +2,7 @@ package com.sparkSAM2018.ui;
 
 import com.sparkSAM2018.application.SAMCenter;
 
+import com.sparkSAM2018.model.Author;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -11,9 +12,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static spark.Spark.halt;
+
 public class PostNameRoute implements TemplateViewRoute {
 
-    final SAMCenter samCenter;
+    private final SAMCenter samCenter;
 
     public PostNameRoute(SAMCenter samCenter){
         this.samCenter = samCenter;
@@ -30,48 +33,57 @@ public class PostNameRoute implements TemplateViewRoute {
         final String radioValue = request.queryParams("memberType");
         final String username = request.queryParams("username");
 
-
-        return validateSignin(vm, username, radioValue);
+        if(radioValue == null){
+            return invalidUsernameError(vm);
+        }
+        else{
+            return validateSignin(vm, username, radioValue, response);
+        }
     }
 
-    private ModelAndView validateSignin(Map<String, Object> vm, String username, String radioValue){
-
+    private ModelAndView validateSignin(Map<String, Object> vm, String username, String radioValue, Response response){
         switch(radioValue){
             case "author":
-                final List author = samCenter.getAuthorUsernameList();
-                if(author.contains(username)){
-                    vm.put("title", GetHomeRoute.TITLE);
-                    return new ModelAndView(vm, PostRegistrationRoute.AUTHOR_FTL);
+                if(samCenter.getSomething(username,"author")){
+                    response.redirect("/author");
+                    halt();
+                    return null;
                 }
                 else{
-                    vm.put("usernameError", "Invalid username, please try again.");
-                    return new ModelAndView(vm, "signin.ftl");
+                    return invalidUsernameError(vm);
                 }
             case "pcm":
-                final List pcm = samCenter.getPCMUsernameList();
-                if(pcm.contains(username)){
-                    vm.put("title", GetHomeRoute.TITLE);
-                    return new ModelAndView(vm, PostRegistrationRoute.PCM_FTL);
+                if(samCenter.getSomething(username,"pcm")){
+                    response.redirect("/pcm");
+                    halt();
+                    return null;
                 }
                 else{
-                    vm.put("usernameError", "Invalid username, please try again.");
-                    return new ModelAndView(vm, "signin.ftl");
+                    return invalidUsernameError(vm);
                 }
             case "pcc":
-                final List pcc = samCenter.getPCCUsernameList();
-                if(pcc.contains(username)){
-                    vm.put("title", GetHomeRoute.TITLE);
-                    return new ModelAndView(vm, PostRegistrationRoute.PCC_FTL);
+                if(samCenter.getSomething(username,"pcc")){
+                    response.redirect("/pcc");
+                    halt();
+                    return null;
+                }
+                else{
+                    return invalidUsernameError(vm);
                 }
             case "administrator":
                 final String admin = samCenter.getAdministratorName();
                 if(admin.equals(username)){
-                    vm.put("title", GetHomeRoute.TITLE);
-                    return new ModelAndView(vm, PostRegistrationRoute.ADMIN_URL);
+                    response.redirect("/admin");
+                    halt();
+                    return null;
                 }
             default:
-                vm.put("usernameError", "Invalid username, please try againnnnn.");
-                return new ModelAndView(vm, PostRegistrationRoute.SIGNIN_FTL);
+                return invalidUsernameError(vm);
         }
+    }
+
+    private ModelAndView invalidUsernameError(Map<String, Object> vm){
+        vm.put("usernameError", "Invalid username, please try again.");
+        return new ModelAndView(vm, "signin.ftl");
     }
 }

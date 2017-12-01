@@ -15,7 +15,6 @@ public class GetHomeRoute implements TemplateViewRoute {
         Map<String, Object> vm = new HashMap<>();
         vm.put("title", TITLE);
 
-
         return new ModelAndView(vm, "home.ftl");
     }
 }

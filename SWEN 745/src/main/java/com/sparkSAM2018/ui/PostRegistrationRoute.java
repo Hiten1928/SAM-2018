@@ -1,6 +1,10 @@
 package com.sparkSAM2018.ui;
 
 import com.sparkSAM2018.application.SAMCenter;
+import com.sparkSAM2018.model.Author;
+import com.sparkSAM2018.model.PCC;
+import com.sparkSAM2018.model.PCM;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -9,6 +13,9 @@ import spark.TemplateViewRoute;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import static spark.Spark.halt;
 
 public class PostRegistrationRoute implements TemplateViewRoute {
 
@@ -18,7 +25,7 @@ public class PostRegistrationRoute implements TemplateViewRoute {
     static final String ADMIN_URL = "admin.ftl";
     static final String SIGNIN_FTL = "signin.ftl";
 
-    final SAMCenter samCenter;
+    private final SAMCenter samCenter;
 
     public PostRegistrationRoute(SAMCenter samCenter){
         this.samCenter = samCenter;
@@ -35,46 +42,47 @@ public class PostRegistrationRoute implements TemplateViewRoute {
         final String radioValue = request.queryParams("memberType");
         final String username = request.queryParams("username");
 
-        final boolean usernameAvailable = isNameAvailable(username, radioValue);
-        if(usernameAvailable){
-            return new ModelAndView(vm, SIGNIN_FTL);
+        if(radioValue == null){
+            vm.put("usernameError","Please select your member type in order to proceed.");
+            return new ModelAndView(vm,"registration.ftl");
         }
         else{
-            vm.put("usernameError", "Username already taken, please choose another.");
-            return new ModelAndView(vm, "registration.ftl");
+            if(isNameAvailable(username, radioValue)){
+                return new ModelAndView(vm, SIGNIN_FTL);
+            }
+            else{
+                vm.put("usernameError","Invalid username, please try again.");
+                return new ModelAndView(vm,"registration.ftl");
+            }
         }
     }
 
 
     private boolean isNameAvailable(String username, String radioValue){
-
         switch(radioValue){
             case "author":
-                final List authorNames = samCenter.getAuthorUsernameList();
-                if(!authorNames.contains(username)){
-                    authorNames.add(username);
-                    return true;
+                if(samCenter.getSomething(username,"author")){
+                    return false;
                 }
                 else{
-                    return false;
+                    samCenter.getAuthorUsernameList().add(new Author(username));
+                    return true;
                 }
             case "pcm":
-                final List pcmNames = samCenter.getPCMUsernameList();
-                if(!pcmNames.contains(username)){
-                    pcmNames.add(username);
-                    return true;
+                if(samCenter.getSomething(username,"pcm")){
+                    return false;
                 }
                 else{
-                    return false;
+                    samCenter.getPCMUsernameList().add(new PCM(username));
+                    return true;
                 }
             case "pcc":
-                final List pccNames = samCenter.getPCCUsernameList();
-                if(!pccNames.contains(username)){
-                    pccNames.add(username);
-                    return true;
+                if(samCenter.getSomething(username,"pcc")){
+                    return false;
                 }
                 else{
-                    return false;
+                    samCenter.getPCCUsernameList().add(new PCC(username));
+                    return true;
                 }
             default:
                 return false;
