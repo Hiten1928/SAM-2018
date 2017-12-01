@@ -6,8 +6,8 @@ import com.sparkSAM2018.application.SAMCenter;
 import com.sparkSAM2018.model.Author;
 import com.sparkSAM2018.model.Paper;
 
-import org.apache.commons.io.IOUtils;
 import spark.*;
+import spark.utils.IOUtils;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletException;
@@ -37,7 +37,8 @@ public class PostPaperRoute implements TemplateViewRoute{
         directory.mkdir();
 
         try {
-            request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/Uploaded Papers"));
+            //request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/Uploaded Papers"));
+            request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/UploadedPapers"));
 
             Part uploadedFile = request.raw().getPart("uploaded_file");
             Part author = request.raw().getPart("authorName");
@@ -50,12 +51,10 @@ public class PostPaperRoute implements TemplateViewRoute{
 
             try (InputStream in = uploadedFile.getInputStream()) {
                 OutputStream outputStream = new FileOutputStream("" + Application.pathReference + "\\UploadedPapers\\" + getSubmittedFileName(uploadedFile));
-                IOUtils.copy(in,outputStream);
+                IOUtils.copy(in, outputStream);
                 outputStream.close();
             }
-            samCenter.getSubmittedPapers().add(new Paper(new Author(author_name),paper_title,version,uploadedFile));
-            samCenter.sendSubmissionNotification();
-            vm.put("pathReference",Application.pathReference);
+            samCenter.getSubmittedPapers().add(new Paper(new Author(author_name),paper_title,version));
             vm.put("paperSubmissionMessage", getSubmittedFileName(uploadedFile));
         }
         catch (IOException e) {
