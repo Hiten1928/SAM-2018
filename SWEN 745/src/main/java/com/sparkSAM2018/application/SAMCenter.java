@@ -98,9 +98,5 @@ public class SAMCenter {
         }
         return false;
     }
-
-    public void sendSubmissionNotification(){
-
-    }
 }
 
