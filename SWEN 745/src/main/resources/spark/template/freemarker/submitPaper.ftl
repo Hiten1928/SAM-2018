@@ -18,14 +18,14 @@
 
             <h2>
                 <div class="body">
-                    Submit Paper
+                    Submit Paper Page
                 </div>
             </h2>
 
             <form method="POST" enctype="multipart/form-data" action="/postPaper">
                 Enter author name: <input type="text" name="authorName" required="true"><br />
                 Enter title: <input type="text" name="title" required="true"><br />
-                Enter version: <input type="number" min="1" name="version" required="true"><br />
+                Enter version: <input type="number" name="version" required="true"><br />
                 <br /><br />
 
                 File to upload: <br />
@@ -35,9 +35,8 @@
 
 
             <#if paperSubmissionMessage??>
-                <a href="${pathReference}${paperSubmissionMessage}"> ${paperSubmissionMessage} </a>
+                <a href="" download> ${paperSubmissionMessage} </a>
             </#if>
-
         </div>
     </body>
 </html>

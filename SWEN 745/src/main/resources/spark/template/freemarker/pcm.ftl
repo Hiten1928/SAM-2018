@@ -13,7 +13,7 @@
                 <a href="/">Home Page</a> -
                 <a href="/submittedPapers">Papers Submitted</a> -
                 <a href="/reviewPapers">Papers for Review</a> -
-                <a href="/signout">Sign Out</a>
+                <a href="/">Sign Out</a>
             </div><br /><br />
 
             <h2>
