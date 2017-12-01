@@ -29,7 +29,7 @@
                     <input type="radio" name="memberType" value="pcc"> Program Committee Chair </input>
                 </div><br /><br />
 
-                Please enter your desired username below.
+                Please enter your desired username below. You will be redirected to the sign-in page upon successful registration.
 
                 <br/>
                 Username: <input name="username" />

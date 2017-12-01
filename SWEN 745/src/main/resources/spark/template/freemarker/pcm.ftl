@@ -11,7 +11,7 @@
 
             <div class="navigation">
                 <a href="/">Home Page</a> -
-                <a href="/papersList">Papers Submitted</a> -
+                <a href="/submittedPapers">Papers Submitted</a> -
                 <a href="/reviewPapers">Papers for Review</a> -
                 <a href="/signout">Sign Out</a>
             </div><br /><br />

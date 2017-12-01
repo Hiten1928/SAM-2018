@@ -15,7 +15,7 @@
                 <a href="/manageDeadlines">Manage Deadlines</a> -
                 <a href="/manageTemplates">Manage Templates</a> -
                 <a href="/manageNotifications">Manage Notifications</a> -
-                <a href="/signout">Sign Out</a>
+                <a href="/">Sign Out</a>
             </div><br /><br />
 
             <h2>
