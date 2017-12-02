@@ -113,6 +113,7 @@ public class WebServer {
         get("/submittedPapers", new GetSubmittedPapersRoute(samCenter), templateEngine);
         get("/submitPaper", new GetSubmitPaperRoute(samCenter), templateEngine);
         get("/assignPapers", new GetAssignPapersRoute(samCenter), templateEngine);
+        get("/pcmInterests", new GetPCMInterestsRoute(samCenter), templateEngine);
 
         //get(ADMIN_URL, new GetAdminRoute(samCenter), templateEngine);
 
@@ -121,5 +122,6 @@ public class WebServer {
         post("/registrationPost", new PostRegistrationRoute(samCenter), templateEngine);
         post("/postPaper", new PostPaperRoute(samCenter), templateEngine);
         post("/reviewRequest", new PostReviewRequest(samCenter), templateEngine);
+        post("/postAssignPapers", new PostAssignPapers(samCenter), templateEngine);
     }
 }

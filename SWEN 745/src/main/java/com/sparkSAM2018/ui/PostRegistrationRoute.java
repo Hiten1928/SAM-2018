@@ -4,17 +4,14 @@ import com.sparkSAM2018.application.SAMCenter;
 import com.sparkSAM2018.model.Author;
 import com.sparkSAM2018.model.PCC;
 import com.sparkSAM2018.model.PCM;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.TemplateViewRoute;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import static spark.Spark.halt;
 
 public class PostRegistrationRoute implements TemplateViewRoute {
 
@@ -46,7 +43,7 @@ public class PostRegistrationRoute implements TemplateViewRoute {
             return new ModelAndView(vm,"registration.ftl");
         }
         else{
-            if(isNameAvailable(username, radioValue)){
+            if(isNameAvailable(username, radioValue, response)){
                 return new ModelAndView(vm, SIGNIN_FTL);
             }
             else{
@@ -57,7 +54,7 @@ public class PostRegistrationRoute implements TemplateViewRoute {
     }
 
 
-    private boolean isNameAvailable(String username, String radioValue){
+    private boolean isNameAvailable(String username, String radioValue, Response response){
         switch(radioValue){
             case "author":
                 if(samCenter.getSomething(username,"author")){
@@ -65,6 +62,7 @@ public class PostRegistrationRoute implements TemplateViewRoute {
                 }
                 else{
                     samCenter.getAuthorUsernameList().add(new Author(username));
+                    response.cookie("usernameAuthor",username);
                     return true;
                 }
             case "pcm":
@@ -73,6 +71,7 @@ public class PostRegistrationRoute implements TemplateViewRoute {
                 }
                 else{
                     samCenter.getPCMUsernameList().add(new PCM(username));
+                    response.cookie("usernamePCM",username);
                     return true;
                 }
             case "pcc":
@@ -81,6 +80,7 @@ public class PostRegistrationRoute implements TemplateViewRoute {
                 }
                 else{
                     samCenter.getPCCUsernameList().add(new PCC(username));
+                    response.cookie("usernamePCC",username);
                     return true;
                 }
             default:

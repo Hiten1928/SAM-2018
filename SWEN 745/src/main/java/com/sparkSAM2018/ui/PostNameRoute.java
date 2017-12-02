@@ -54,8 +54,7 @@ public class PostNameRoute implements TemplateViewRoute {
                 }
             case "pcm":
                 if(samCenter.getSomething(username,"pcm")){
-                    response.redirect("/pcm");
-                    halt();
+                    response.redirect(String.format("/pcm"));
                     return null;
                 }
                 else{

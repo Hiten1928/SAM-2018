@@ -1,24 +1,22 @@
 package com.sparkSAM2018.ui;
 
 import com.sparkSAM2018.application.SAMCenter;
-import com.sparkSAM2018.model.Paper;
+import com.sparkSAM2018.model.ReviewRequest;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.TemplateViewRoute;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.Part;
-import java.io.IOException;
+
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class PostReviewRequest implements TemplateViewRoute {
 
     private final SAMCenter samCenter;
-    List<String> poop = new ArrayList<>();
-    List<String> poop2 = new ArrayList<>();
+    List<String> preFormattedTitle = new ArrayList<>();
+    List<String> finalizedTitles = new ArrayList<>();
 
     public PostReviewRequest(SAMCenter samCenter) {
         this.samCenter = samCenter;
@@ -38,22 +36,21 @@ public class PostReviewRequest implements TemplateViewRoute {
         for(int x = 0; x < strings.size(); x++){
             String stris = strings.get(x);
             String stris2 = stris.replaceAll("\\+"," ");
-            poop.add(stris2);
-        }
-        for(int x = 0; x < strings.size(); x++){
-            String st = poop.get(x);
-            String stris3 = st.replaceAll("\\s$","");
-            poop2.add(stris3);
+             preFormattedTitle.add(stris2);
         }
 
-        List<Paper> submittedPapers = samCenter.getSubmittedPapers();
-        for(int y = 0; y < poop2.size(); y++){
-            for(int a = 0; a < submittedPapers.size(); a++) {
+        for(int x = 0; x < strings.size(); x++){
+            String st = preFormattedTitle.get(x);
+            String stris3 = st.replaceAll("\\s$","");
+            finalizedTitles.add(stris3);
+        }
+
+        for(int y = 0; y < finalizedTitles.size(); y++){
+            for(int a = 0; a < samCenter.getSubmittedPapers().size(); a++) {
                 try {
-                    if (submittedPapers.get(a).getTitle().equals(poop2.get(y))) {
-                        System.out.println("yes");
-                        Part part = submittedPapers.get(a).getPaper();
-                        System.out.println(PostPaperRoute.getSubmittedFileName(part));
+                    if (samCenter.getSubmittedPapers().get(a).getTitle().equals(finalizedTitles.get(y))) {
+                        Part part = samCenter.getSubmittedPapers().get(a).getPaper();
+                        samCenter.getInterests().add(part);
                     } else {
                         //do nothing
                     }
@@ -62,6 +59,11 @@ public class PostReviewRequest implements TemplateViewRoute {
                 }
             }
         }
+        new ReviewRequest(request.cookie("usernamePCM"),samCenter.getInterests());
+        samCenter.getEnglishInterests().put(request.cookie("usernamePCM"),finalizedTitles);
+
+        preFormattedTitle = new ArrayList<>();
+        finalizedTitles = new ArrayList<>();
 
         vm.put("papersSubmitted",samCenter.getPapersSubmitted());
         return new ModelAndView(vm,"submittedPapers.ftl");

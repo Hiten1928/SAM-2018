@@ -55,7 +55,7 @@ public class PostPaperRoute implements TemplateViewRoute{
                 outputStream.close();
             }
             samCenter.getSubmittedPapers().add(new Paper(new Author(author_name),paper_title,version,uploadedFile));
-            vm.put("paperSubmissionMessage", getSubmittedFileName(uploadedFile));
+            vm.put("paperSubmissionMessage", "You have successfully uploaded a submission for review!");
         }
         catch (IOException e) {
             System.out.println("IOException");
