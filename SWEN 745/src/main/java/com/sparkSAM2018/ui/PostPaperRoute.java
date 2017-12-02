@@ -54,7 +54,7 @@ public class PostPaperRoute implements TemplateViewRoute{
                 IOUtils.copy(in, outputStream);
                 outputStream.close();
             }
-            samCenter.getSubmittedPapers().add(new Paper(new Author(author_name),paper_title,version));
+            samCenter.getSubmittedPapers().add(new Paper(new Author(author_name),paper_title,version,uploadedFile));
             vm.put("paperSubmissionMessage", getSubmittedFileName(uploadedFile));
         }
         catch (IOException e) {
@@ -67,7 +67,7 @@ public class PostPaperRoute implements TemplateViewRoute{
         return new ModelAndView(vm,"submitPaper.ftl");
     }
 
-    private static String getSubmittedFileName(Part part) {
+    public static String getSubmittedFileName(Part part) {
         for (String cd : part.getHeader("content-disposition").split(";")) {
             if (cd.trim().startsWith("filename")) {
                 String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");

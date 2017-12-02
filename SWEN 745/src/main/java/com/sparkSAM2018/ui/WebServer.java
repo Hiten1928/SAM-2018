@@ -112,6 +112,7 @@ public class WebServer {
         get(PCC_URL, new GetPCCRoute(samCenter), templateEngine);
         get("/submittedPapers", new GetSubmittedPapersRoute(samCenter), templateEngine);
         get("/submitPaper", new GetSubmitPaperRoute(samCenter), templateEngine);
+        get("/assignPapers", new GetAssignPapersRoute(samCenter), templateEngine);
 
         //get(ADMIN_URL, new GetAdminRoute(samCenter), templateEngine);
 

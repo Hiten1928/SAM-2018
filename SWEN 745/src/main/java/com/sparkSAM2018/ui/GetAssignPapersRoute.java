@@ -12,11 +12,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GetSubmittedPapersRoute implements TemplateViewRoute {
+public class GetAssignPapersRoute implements TemplateViewRoute {
 
     private final SAMCenter samCenter;
 
-    public GetSubmittedPapersRoute(SAMCenter samCenter){
+    public GetAssignPapersRoute(SAMCenter samCenter){
         this.samCenter = samCenter;
     }
 
@@ -30,10 +30,11 @@ public class GetSubmittedPapersRoute implements TemplateViewRoute {
 
         for(int x = 0; x < samCenter.getSubmittedPapers().size(); x++){
             samCenter.getPapersSubmitted().add(samCenter.getSubmittedPapers().get(x).getTitle() + " by " +
-            samCenter.getSubmittedPapers().get(x).getAuthor() + ", version: " + samCenter.getSubmittedPapers().get(x).getVersion());
+                    samCenter.getSubmittedPapers().get(x).getAuthor() + ", version: " + samCenter.getSubmittedPapers().get(x).getVersion());
         }
 
         vm.put("papersSubmitted",samCenter.getPapersSubmitted());
-        return new ModelAndView(vm, "submittedPapers.ftl");
+        return new ModelAndView(vm, "assignPapers.ftl");
     }
 }
+
