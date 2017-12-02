@@ -19,10 +19,28 @@
 
             <h2>
                 <div class="body">
-                    PCC Page
+                    PCM Interests
                 </div>
             </h2>
 
+            <#if interestsList??>
+                <br />
+                PCM Paper Interests:
+                <br />
+                <ol>
+                        <#list pcmName as pcmName>
+                            <li> PCM Username: ${pcmName} </li>
+                            <ul>
+                                <li> Interests: </li>
+                                <ul>
+                                    <#list interestsList as n>
+                                        <li> Paper: <i>${n}</i> </li>
+                                    </#list>
+                                </ul>
+                            </ul>
+                        </#list>
+                </ol>
+            </#if>
         </div>
     </body>
 </html>

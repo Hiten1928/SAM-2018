@@ -10,7 +10,7 @@
             <h1> - Software Architecture Mining 2018 - </h1>
 
             <div class="navigation">
-                <a href="/">Home Page</a> -
+                <a href="/author">Home Page</a> -
                 <a href="/submitPaper">Submit Paper</a> -
                 <a href="/reviewSubmissions">Review Submissions</a> -
                 <a href="/">Sign Out</a>

@@ -10,9 +10,10 @@
             <h1> - Software Architecture Mining 2018 - </h1>
 
             <div class="navigation">
-                <a href="/">Home Page</a> -
+                <a href="/pcc">Home Page</a> -
                 <a href="/assignPapers">Assign Papers</a> -
                 <a href="/reviewedPapers">Reviewed Papers</a> -
+                <a href="/pcmInterests">PCM Interests</a> -
                 <a href="/">Sign Out</a>
             </div><br /><br />
 
@@ -29,23 +30,25 @@
                 <ol>
                     <#list papersSubmitted as n>
                         <div>
-                            <input name="papers" value="${n}" type="radio" > ${n} </input>
-
-                            <div class="author details">
-                                <br />
-                                *CTRL+C to select multiple authors* <br />
-
-                                <select multiple>
-                                    <option value="a">Author Name</option>
-                                    <option value="b">Author Name</option>
-                                    <option value="c">Author Name</option>
-                                </select>
-                            </div>
-                        </div>
-                    </#list>
+                            <form method="POST" action="/postAssignPapers">
+                                <input name="paper" value="${n}" type="radio" > ${n} </input>
+                                <div class="author details">
+                                    <br />
+                                    *Hold down CTRL or CMD to select multiple authors* <br />
+                                        <select name="assignedAuthor">
+                                            <option value="a">Author Name</option>
+                                            <option value="b">Author Name</option>
+                                            <option value="c">Author Name</option>
+                                            <option value="d">Author Name</option>
+                                        </select>
+                                    <input type="submit" value="Submit">
+                                </div> <!-- end of author div -->
+                            </form> <!-- end of selection form -->
+                        </div> <!-- end of blank div -->
+                    </#list> <!-- end of papers list -->
                 </ol>
-            </#if>
-        </div>
+            </#if> <!-- end of if papers exist -->
+        </div> <!-- end of div page -->
     </body>
 </html>
 
