@@ -2,17 +2,17 @@ package com.sparkSAM2018.model;
 
 public class PCC {
 
-    private String name;
+    private String username;
 
-    public PCC(String name){
-        this.name = name;
+    public PCC(String username){
+        this.username = username;
     }
 
     public String getPCCName(){
-        return name;
+        return username;
     }
 
     public boolean hasPCC(String name){
-        return name.equals(name);
+        return username.equals(name);
     }
 }
