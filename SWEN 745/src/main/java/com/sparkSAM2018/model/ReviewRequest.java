@@ -1,25 +1,24 @@
 package com.sparkSAM2018.model;
 
+import javax.servlet.http.Part;
+import java.util.List;
+import java.util.Map;
+
 public class ReviewRequest {
 
-    /*
-        each request will be associated with a PCM
+    private String pcmName;
+    private List<Part> interests;
 
-        request will be of List<Part>
+    public ReviewRequest(String pcmName, List<Part> interests){
+        this.pcmName = pcmName;
+        this.interests = interests;
+    }
 
-        new ReviewRequest is created by:
-            PCM selects radio buttons
-            get everything before " by"
-            find that title in papers list, get the Part associated with title
+    public String getPcmName(){
+        return pcmName;
+    }
 
-            List<Part> interests = new ArrayList<>();
-            this = getStringBefore(" by")
-            for list of papers{
-                if index.getTitle().equals(this){
-                    Part part = index.getPart()
-                    interests.add(part)
-                }
-            }
-            Review Request = new ReviewRequest(pcmSignedIn, interests)
-     */
+    public List<Part> getInterests(){
+        return interests;
+    }
 }
