@@ -35,7 +35,7 @@
 
 
             <#if paperSubmissionMessage??>
-                <a href="" download> ${paperSubmissionMessage} </a>
+                <a href=""> ${paperSubmissionMessage} </a>
             </#if>
         </div>
     </body>
