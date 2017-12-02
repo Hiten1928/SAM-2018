@@ -23,6 +23,7 @@ public class SAMCenter {
     private List<PCM> pcmUsernames = new ArrayList<>();
     private List<PCC> pccUsernames = new ArrayList<>();
     private List<Paper> submittedPapers = new ArrayList();
+    private List<String> papersSubmitted = new ArrayList<>();
 
     private String administratorName = "Administrator";
 
@@ -70,6 +71,10 @@ public class SAMCenter {
 
     public List<Paper> getSubmittedPapers(){
         return submittedPapers;
+    }
+
+    public List<String> getPapersSubmitted(){
+        return papersSubmitted;
     }
 
     public boolean getSomething(String name, String type){
