@@ -127,3 +127,13 @@ div.info {
     padding: 4px;
     font-size: 13px;
 }
+
+input[type=radio] + .author{
+    display:none;
+}
+input[type=radio]:checked + .author{
+    display:block;
+}
+
+
+
