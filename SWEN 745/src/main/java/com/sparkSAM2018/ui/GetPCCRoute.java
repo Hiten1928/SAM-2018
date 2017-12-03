@@ -25,6 +25,9 @@ public class GetPCCRoute implements TemplateViewRoute {
         Map<String, Object> vm = new HashMap<>();
         vm.put("title", GetHomeRoute.TITLE);
 
+        if(!samCenter.getPccNote().isEmpty()){
+            vm.put("notification", samCenter.getPccNote().get(0).getMessage());
+        }
         return new ModelAndView(vm, "pcc.ftl");
     }
 }

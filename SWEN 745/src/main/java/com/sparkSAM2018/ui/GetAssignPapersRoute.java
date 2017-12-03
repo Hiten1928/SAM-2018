@@ -28,12 +28,16 @@ public class GetAssignPapersRoute implements TemplateViewRoute {
         Map<String, Object> vm = new HashMap<>();
         vm.put("title", GetHomeRoute.TITLE);
 
+        if(!samCenter.getPapersSubmitted().isEmpty()){
+            samCenter.getPapersSubmitted().clear();
+        }
         for(int x = 0; x < samCenter.getSubmittedPapers().size(); x++){
             samCenter.getPapersSubmitted().add(samCenter.getSubmittedPapers().get(x).getTitle() + " by " +
                     samCenter.getSubmittedPapers().get(x).getAuthor() + ", version: " + samCenter.getSubmittedPapers().get(x).getVersion());
         }
 
         vm.put("papersSubmitted",samCenter.getPapersSubmitted());
+        vm.put("samCenter", samCenter);
         return new ModelAndView(vm, "assignPapers.ftl");
     }
 }

@@ -1,7 +1,6 @@
 package com.sparkSAM2018.ui;
 
 import com.sparkSAM2018.application.SAMCenter;
-import com.sparkSAM2018.model.ReviewRequest;
 
 import spark.ModelAndView;
 import spark.Request;
@@ -59,7 +58,6 @@ public class PostReviewRequest implements TemplateViewRoute {
                 }
             }
         }
-        new ReviewRequest(request.cookie("usernamePCM"),samCenter.getInterests());
         samCenter.getEnglishInterests().put(request.cookie("usernamePCM"),finalizedTitles);
 
         preFormattedTitle = new ArrayList<>();

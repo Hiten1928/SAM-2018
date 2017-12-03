@@ -4,6 +4,7 @@ import com.sparkSAM2018.Application;
 import com.sparkSAM2018.application.SAMCenter;
 
 import com.sparkSAM2018.model.Author;
+import com.sparkSAM2018.model.Notification;
 import com.sparkSAM2018.model.Paper;
 
 import spark.*;
@@ -64,6 +65,7 @@ public class PostPaperRoute implements TemplateViewRoute{
             System.out.println("Servlet Exception");
         }
 
+        samCenter.getPccNote().add(new Notification("A paper has been submitted"));
         return new ModelAndView(vm,"submitPaper.ftl");
     }
 
