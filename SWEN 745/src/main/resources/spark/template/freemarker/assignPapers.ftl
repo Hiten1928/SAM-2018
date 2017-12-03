@@ -31,15 +31,14 @@
                     <#list papersSubmitted as n>
                         <div>
                             <form method="POST" action="/postAssignPapers">
-                                <input name="paper" value="${n}" type="radio" > ${n} </input>
+                                <input name="paper" value="${n}" type="radio"> ${n} </input>
                                 <div class="author details">
                                     <br />
                                     *Hold down CTRL or CMD to select multiple authors* <br />
                                         <select name="assignedAuthor">
-                                            <option value="a">Author Name</option>
-                                            <option value="b">Author Name</option>
-                                            <option value="c">Author Name</option>
-                                            <option value="d">Author Name</option>
+                                            <#list samCenter.getPCMUsernameList() as entry>
+                                                <option value="${entry.getPCMName()}"> ${entry.getPCMName()} </option>
+                                            </#list>
                                         </select>
                                     <input type="submit" value="Submit">
                                 </div> <!-- end of author div -->

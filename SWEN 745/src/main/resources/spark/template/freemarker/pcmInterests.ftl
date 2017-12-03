@@ -28,17 +28,17 @@
                 PCM Paper Interests:
                 <br />
                 <ol>
-                        <#list pcmName as pcmName>
-                            <li> PCM Username: ${pcmName} </li>
+                    <#list pcmName as pcmName>
+                        <li> PCM Username: ${pcmName} </li>
+                        <ul>
+                            <li> Interests: </li>
                             <ul>
-                                <li> Interests: </li>
-                                <ul>
-                                    <#list interestsList as n>
-                                        <li> Paper: <i>${n}</i> </li>
-                                    </#list>
-                                </ul>
+                                <#list interestsList as n>
+                                    <li> Paper: <i>${n}</i> </li>
+                                </#list>
                             </ul>
-                        </#list>
+                        </ul>
+                    </#list>
                 </ol>
             </#if>
         </div>
