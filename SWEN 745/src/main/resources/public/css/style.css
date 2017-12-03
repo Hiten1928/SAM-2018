@@ -69,6 +69,18 @@ div.page div.navigation {
     text-align: center;
 }
 
+div.notification{
+    background: white;
+    padding: 4px 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #eee;
+    color: #888;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+
 div.page div.navigation a {
     color: #444;
     font-weight: bold;
@@ -131,9 +143,11 @@ div.info {
 input[type=radio] + .author{
     display:none;
 }
+
 input[type=radio]:checked + .author{
     display:block;
 }
+
 
 
 
