@@ -10,13 +10,15 @@
             <h1> - Software Architecture Mining 2018 - </h1>
 
             <div class="navigation">
-                <a href="/">Home Page</a> -
-                <a href="/signin">Sign In</a>
+                <a href="/pcm">Home Page</a> -
+                <a href="/submittedPapers">Papers Submitted</a> -
+                <a href="/reviewPapers">Papers for Review</a> -
+                <a href="/">Sign Out</a>
             </div><br /><br />
 
             <h2>
                 <div class="body">
-                    Welcome to SAM 2018! Located in Rochester, New York!
+                    PCM Page
                 </div>
             </h2>
 

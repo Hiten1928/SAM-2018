@@ -98,6 +98,16 @@ public class SAMCenter {
         return englishInterests;
     }
 
+    public List<String> AssignedPCM;
+
+    /*public void setAssignedPCM(String s){
+        AssignedPCM.add("");
+    }*/
+
+    /*public boolean DataSave(){
+
+    }*/
+
     public boolean getSomething(String name, String type){
         switch(type){
             case "author":
@@ -124,5 +134,7 @@ public class SAMCenter {
         }
         return false;
     }
+
+
 }
 

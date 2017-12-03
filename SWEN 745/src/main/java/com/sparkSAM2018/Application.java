@@ -1,7 +1,7 @@
 package com.sparkSAM2018;
 
 //import java.io.InputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Objects;
 // java.util.logging.LogManager;
 import java.util.logging.LogManager;
@@ -41,7 +41,7 @@ public final class Application {
      * @param args
      *    Command line arguments; none expected.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // initialize Logging
         /*try {
             ClassLoader classLoader = Application.class.getClassLoader();
@@ -96,15 +96,26 @@ public final class Application {
     // Private methods
     //
 
-    private void initialize() {
+    private void initialize() throws IOException{
         LOG.fine("SAM 2018 is initializing.");
 
         // configure Spark and startup the Jetty web server
         webServer.initialize();
 
+        try
+        {
+            PrintWriter out = new PrintWriter( "user.txt");
+            out.println("hammy");
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
         // other applications might have additional services to configure
 
         LOG.fine("SAM 2018 initialization complete.");
     }
+
+
 
 }

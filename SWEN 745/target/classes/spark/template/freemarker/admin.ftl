@@ -11,12 +11,16 @@
 
             <div class="navigation">
                 <a href="/">Home Page</a> -
-                <a href="/signin">Sign In</a>
+                <a href="/manageAccounts">Manage Accounts</a> -
+                <a href="/manageDeadlines">Manage Deadlines</a> -
+                <a href="/manageTemplates">Manage Templates</a> -
+                <a href="/manageNotifications">Manage Notifications</a> -
+                <a href="/">Sign Out</a>
             </div><br /><br />
 
             <h2>
                 <div class="body">
-                    Welcome to SAM 2018! Located in Rochester, New York!
+                    Admin Page
                 </div>
             </h2>
 
