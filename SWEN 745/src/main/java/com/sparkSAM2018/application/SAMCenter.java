@@ -1,9 +1,6 @@
 package com.sparkSAM2018.application;
 
-import com.sparkSAM2018.model.Author;
-import com.sparkSAM2018.model.PCC;
-import com.sparkSAM2018.model.PCM;
-import com.sparkSAM2018.model.Paper;
+import com.sparkSAM2018.model.*;
 import spark.Request;
 import spark.Session;
 
@@ -24,12 +21,14 @@ public class SAMCenter {
     private List<Author> authorUsernames = new ArrayList<>();
     private List<PCM> pcmUsernames = new ArrayList<>();
     private List<PCC> pccUsernames = new ArrayList<>();
-    private List<Paper> submittedPapers = new ArrayList<>();
-    private List<Part> interests = new ArrayList<>();
 
+    private List<Paper> submittedPapers = new ArrayList<>();
     private List<String> papersSubmitted = new ArrayList<>();
 
+    private List<Part> interests = new ArrayList<>();
     private Map<String, List<String>> englishInterests = new HashMap<>();
+
+    private List<Notification> pccNote = new ArrayList<>();
 
     private String administratorName = "Administrator";
 
@@ -85,6 +84,14 @@ public class SAMCenter {
 
     public List<Part> getInterests(){
         return interests;
+    }
+
+    public List<Notification> getPccNote(){
+        return pccNote;
+    }
+
+    public void clearNotifications(){
+        pccNote.clear();
     }
 
     public Map<String, List<String>> getEnglishInterests(){
