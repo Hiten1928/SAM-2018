@@ -8,16 +8,18 @@ public class Paper {
     private String title;
     private int version;
     private Part paper;
+    private String username;
 
-    public Paper(Author author, String title, int version, Part paper){
+    public Paper(Author author, String title, int version, Part paper, String username){
         this.author = author;
         this.title = title;
         this.version = version;
         this.paper = paper;
+        this.username = username;
     }
 
     public String getAuthor(){
-        return author.getAuthorName();
+        return author.getAuthorUsername();
     }
 
     public String getTitle(){
@@ -30,5 +32,9 @@ public class Paper {
 
     public Part getPaper(){
         return paper;
+    }
+
+    public String getUsername(){
+        return username;
     }
 }
