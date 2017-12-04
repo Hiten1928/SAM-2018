@@ -24,6 +24,16 @@
                 </div>
             </h2>
 
+            Current Paper Submission Deadline: <#if submissionDeadline??> ${submissionDeadline?date}</#if><br />
+            Current Review Deadline: <#if reviewDeadline??> ${reviewDeadline?date}</#if><br />
+
+            <br />
+            <form method="GET" action="/manageDeadlines">
+                Change Submission Deadline: <input type="date" name="submissionDeadline"></input><br />
+                Change Review Deadline: <input type="date" name="reviewDeadline"></input><br />
+                <input type="submit" value="Change Date(s)"> </input>
+            </form>
+
         </div>
     </body>
 </html>

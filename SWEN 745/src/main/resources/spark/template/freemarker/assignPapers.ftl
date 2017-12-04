@@ -37,7 +37,7 @@
                                     *Hold down CTRL or CMD to select multiple authors* <br />
                                         <select name="assignedAuthor" multiple>
                                             <#list samCenter.getPCMUsernameList() as entry>
-                                                <option value="${entry.getPCMName()}"> ${entry.getPCMName()} </option>
+                                                <option name="assignedAuthor" value="${entry.getPCMName()}"> ${entry.getPCMName()} </option>
                                             </#list>
                                         </select>
                                     <input type="submit" value="Submit">

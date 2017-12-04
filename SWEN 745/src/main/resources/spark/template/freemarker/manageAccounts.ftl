@@ -20,9 +20,36 @@
 
             <h2>
                 <div class="body">
-                    Admin Page
+                    Manage Accounts
                 </div>
             </h2>
+
+            Author Usernames:
+            <#if authors??>
+                <#list authors as a>
+                    <ul>
+                        <li>${a}</li>
+                    </ul>
+                </#list>
+            </#if>
+
+            PCM Usernames:
+            <#if pcms??>
+                <#list pcms as pcm>
+                    <ul>
+                        <li>${pcm}</li>
+                    </ul>
+                </#list>
+            </#if>
+
+            PCC Username:
+            <#if pcc??>
+                <#list pcc as pcc>
+                    <ul>
+                        <li>${pcc}</li>
+                    </ul>
+                </#list>
+            </#if>
 
         </div>
     </body>

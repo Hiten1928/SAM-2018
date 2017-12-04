@@ -24,7 +24,9 @@
 
             <div class="notification" id="notification">
                 <#if notification??>
-                    <p>${notification}, click <button onclick="hideNotification()"> ok </button> to acknowledge.
+                    <#list notification as notification>
+                        ${notification}, click <a href="/clearNotification?notification=${notification}"> ok </a> to acknowledge.<br />
+                    </#list>
                 </#if>
             </div>
 

@@ -23,24 +23,22 @@
                 </div>
             </h2>
 
-            <#if interestsList??>
-                <br />
-                PCM Paper Interests:
-                <br />
-                <ol>
-                    <#list pcmName as pcmName>
-                        <li> PCM Username: ${pcmName} </li>
-                        <ul>
-                            <li> Interests: </li>
+                <#if pcmInterests??>
+                    <ol>
+                        <#list pcmInterests?keys as key>
+                            <li> PCM Username: ${key} </li>
                             <ul>
-                                <#list interestsList as n>
-                                    <li> Paper: <i>${n}</i> </li>
-                                </#list>
+                                <li> Interests: </li>
+                                <ul>
+                                    <#list pcmInterests[key] as n>
+                                        Paper: <i> ${n} </i> <br />
+                                    </#list>
+                                </ul>
                             </ul>
-                        </ul>
-                    </#list>
-                </ol>
-            </#if>
+                        </#list>
+                    </ol>
+                </#if>
+            </body>
         </div>
     </body>
 </html>
