@@ -26,11 +26,14 @@ public class SAMCenter {
     private List<String> papersSubmitted = new ArrayList<>();
 
     private List<Part> interests = new ArrayList<>();
-    private Map<String, List<String>> englishInterests = new HashMap<>();
+    private HashMap<String, List<String>> englishInterests = new HashMap<>();
 
     private List<Notification> pccNote = new ArrayList<>();
+    private List<Notification> pcmNote = new ArrayList<>();
 
     private String administratorName = "Administrator";
+    private Date submissionDeadline;
+    private Date reviewDeadline;
 
     //
     // constructor
@@ -41,21 +44,32 @@ public class SAMCenter {
     }
 
     /**
-     * Ends the user's session, freeing up their name and logging them out
-     *
      * @param session
      * @param request
      *
      */
     public void end(Session session, Request request) {
-        // validation
         Objects.requireNonNull(session, "session must not be null");
-        // remove the game from the user's session
-        session.removeAttribute("checkGame");
-        // do some application-wide book-keeping
+        //session.removeAttribute("checkGame");
         synchronized (this) {  // protect the critical code
 
         }
+    }
+
+    public void setSubmissionDeadline(Date date){
+        this.submissionDeadline = date;
+    }
+
+    public Date getSubmissionDeadline(){
+        return submissionDeadline;
+    }
+
+    public void setReviewDeadline(Date date){
+        this.reviewDeadline = date;
+    }
+
+    public Date getReviewDeadline(){
+        return reviewDeadline;
     }
 
     public List<Author> getAuthorUsernameList() {
@@ -90,23 +104,13 @@ public class SAMCenter {
         return pccNote;
     }
 
-    public void clearNotifications(){
-        pccNote.clear();
+    public List<Notification> getPcmNote(){
+        return pcmNote;
     }
 
     public Map<String, List<String>> getEnglishInterests(){
         return englishInterests;
     }
-
-    public List<String> AssignedPCM;
-
-    /*public void setAssignedPCM(String s){
-        AssignedPCM.add("");
-    }*/
-
-    /*public boolean DataSave(){
-
-    }*/
 
     public boolean getSomething(String name, String type){
         switch(type){
@@ -134,7 +138,5 @@ public class SAMCenter {
         }
         return false;
     }
-
-
 }
 
