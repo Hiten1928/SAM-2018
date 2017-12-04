@@ -27,6 +27,7 @@ public class SAMCenter {
 
     private List<Part> interests = new ArrayList<>();
     private HashMap<String, List<String>> englishInterests = new HashMap<>();
+    private HashMap<String, ArrayList> assMap = new HashMap<>();
 
     private List<Notification> pccNote = new ArrayList<>();
     private List<Notification> pcmNote = new ArrayList<>();
@@ -56,6 +57,9 @@ public class SAMCenter {
         }
     }
 
+    public HashMap<String, ArrayList> getAssMap(){
+        return assMap;
+    }
     public void setSubmissionDeadline(Date date){
         this.submissionDeadline = date;
     }
