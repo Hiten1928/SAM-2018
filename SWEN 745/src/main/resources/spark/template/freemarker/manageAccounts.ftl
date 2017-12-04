@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <title>${title} | SAM 2018</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
@@ -24,7 +26,18 @@
                 </div>
             </h2>
 
-            Author Usernames:
+            <div class="delete">
+                <button id="showButton" onclick="showForm()"> Show Delete Form</button>
+            </div>
+
+            <div class="deleteForm" id="deleteForm">
+                <form action="/manageAccounts" method="GET">
+                    Username to delete: <input type="text" name="username"><br />
+                    <input type="submit" value="Delete">
+                </form><br />
+            </div>
+
+            Author Usernames: <br />
             <#if authors??>
                 <#list authors as a>
                     <ul>
@@ -33,7 +46,7 @@
                 </#list>
             </#if>
 
-            PCM Usernames:
+            PCM Usernames: <br />
             <#if pcms??>
                 <#list pcms as pcm>
                     <ul>
@@ -50,7 +63,13 @@
                     </ul>
                 </#list>
             </#if>
-
         </div>
+
+        <script type="text/javascript">
+            function showForm(){
+                var element = document.getElementById("deleteForm");
+                element.style.display = 'block';
+            }
+        </script>
     </body>
 </html>

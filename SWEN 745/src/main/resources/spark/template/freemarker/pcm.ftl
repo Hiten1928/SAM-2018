@@ -21,7 +21,7 @@
             <div class="notification" id="notification">
                 <#if notification??>
                     <#list notification as notification>
-                    ${notification}, click <a href="/clearNotification?notification=${notification}"> ok </a> to acknowledge.<br />
+                        ${notification}, click <a href="/pcm?notification=${notification}"> ok </a> to acknowledge.<br />
                     </#list>
                 </#if>
             </div>
