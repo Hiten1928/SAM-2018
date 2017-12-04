@@ -7,6 +7,7 @@ import java.util.Map;
 public class GetHomeRoute implements TemplateViewRoute {
 
     static final String TITLE = "Software Architecture Mining";
+
     /**
      * {@inheritDoc}
      */

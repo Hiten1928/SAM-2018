@@ -55,7 +55,7 @@ public class PostPaperRoute implements TemplateViewRoute{
                 IOUtils.copy(in, outputStream);
                 outputStream.close();
             }
-            samCenter.getSubmittedPapers().add(new Paper(new Author(author_name),paper_title,version,uploadedFile));
+            samCenter.getSubmittedPapers().add(new Paper(new Author(author_name),paper_title,version,uploadedFile,request.cookie("usernameAuthor")));
             vm.put("paperSubmissionMessage", "You have successfully uploaded a submission for review!");
         }
         catch (IOException e) {

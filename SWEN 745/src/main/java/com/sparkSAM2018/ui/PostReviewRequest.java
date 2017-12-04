@@ -2,6 +2,7 @@ package com.sparkSAM2018.ui;
 
 import com.sparkSAM2018.application.SAMCenter;
 
+import com.sparkSAM2018.model.Notification;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -59,6 +60,7 @@ public class PostReviewRequest implements TemplateViewRoute {
             }
         }
         samCenter.getEnglishInterests().put(request.cookie("usernamePCM"),finalizedTitles);
+        samCenter.getPccNote().add(new Notification("A PCM has submitted their interests"));
 
         preFormattedTitle = new ArrayList<>();
         finalizedTitles = new ArrayList<>();

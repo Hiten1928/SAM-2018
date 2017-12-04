@@ -38,6 +38,7 @@ public class GetAssignPapersRoute implements TemplateViewRoute {
 
         vm.put("papersSubmitted",samCenter.getPapersSubmitted());
         vm.put("samCenter", samCenter);
+
         return new ModelAndView(vm, "assignPapers.ftl");
     }
 }

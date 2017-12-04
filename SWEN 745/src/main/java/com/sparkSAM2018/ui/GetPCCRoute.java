@@ -6,12 +6,15 @@ import spark.Request;
 import spark.Response;
 import spark.TemplateViewRoute;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GetPCCRoute implements TemplateViewRoute {
 
     private final SAMCenter samCenter;
+
 
     public GetPCCRoute(SAMCenter samCenter){
         this.samCenter = samCenter;
@@ -25,9 +28,21 @@ public class GetPCCRoute implements TemplateViewRoute {
         Map<String, Object> vm = new HashMap<>();
         vm.put("title", GetHomeRoute.TITLE);
 
-        if(!samCenter.getPccNote().isEmpty()){
-            vm.put("notification", samCenter.getPccNote().get(0).getMessage());
+        if(request.queryParams("notification") != null){
+            String notie = request.queryParams("notification");
+            for(int x = 0; x < samCenter.getPccNote().size(); x++){
+                if(samCenter.getPccNote().get(x).getMessage().equals(notie)){
+                    samCenter.getPccNote().remove(samCenter.getPccNote().get(x));
+                }
+            }
         }
+
+        List<String> noties = new ArrayList<>();
+        for(int x = 0; x < samCenter.getPccNote().size(); x++){
+            noties.add(samCenter.getPccNote().get(x).getMessage());
+        }
+
+        vm.put("notification",noties);
         return new ModelAndView(vm, "pcc.ftl");
     }
 }

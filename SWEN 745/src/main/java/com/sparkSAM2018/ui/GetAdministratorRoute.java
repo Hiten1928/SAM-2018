@@ -9,11 +9,11 @@ import spark.TemplateViewRoute;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GetPCMRoute implements TemplateViewRoute{
+public class GetAdministratorRoute implements TemplateViewRoute {
 
     private final SAMCenter samCenter;
 
-    public GetPCMRoute(SAMCenter samCenter){
+    public GetAdministratorRoute(SAMCenter samCenter) {
         this.samCenter = samCenter;
     }
 
@@ -25,10 +25,6 @@ public class GetPCMRoute implements TemplateViewRoute{
         Map<String, Object> vm = new HashMap<>();
         vm.put("title", GetHomeRoute.TITLE);
 
-        //map to the actual pcm, not all pcms
-        if(!samCenter.getPcmNote().isEmpty()){
-            vm.put("notification", samCenter.getPcmNote().get(0).getMessage());
-        }
-        return new ModelAndView(vm, "pcm.ftl");
+        return new ModelAndView(vm, "admin.ftl");
     }
 }

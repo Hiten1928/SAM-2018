@@ -62,7 +62,6 @@ public class PostRegistrationRoute implements TemplateViewRoute {
                 }
                 else{
                     samCenter.getAuthorUsernameList().add(new Author(username));
-                    response.cookie("usernameAuthor",username);
                     return true;
                 }
             case "pcm":
@@ -71,7 +70,6 @@ public class PostRegistrationRoute implements TemplateViewRoute {
                 }
                 else{
                     samCenter.getPCMUsernameList().add(new PCM(username));
-                    response.cookie("usernamePCM",username);
                     return true;
                 }
             case "pcc":
@@ -80,7 +78,6 @@ public class PostRegistrationRoute implements TemplateViewRoute {
                 }
                 else{
                     samCenter.getPCCUsernameList().add(new PCC(username));
-                    response.cookie("usernamePCC",username);
                     return true;
                 }
             default:

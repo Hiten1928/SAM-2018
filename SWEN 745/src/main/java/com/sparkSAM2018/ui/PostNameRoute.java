@@ -45,6 +45,7 @@ public class PostNameRoute implements TemplateViewRoute {
         switch(radioValue){
             case "author":
                 if(samCenter.getSomething(username,"author")){
+                    response.cookie("usernameAuthor",username);
                     response.redirect("/author");
                     halt();
                     return null;
@@ -54,6 +55,7 @@ public class PostNameRoute implements TemplateViewRoute {
                 }
             case "pcm":
                 if(samCenter.getSomething(username,"pcm")){
+                    response.cookie("usernamePCM",username);
                     response.redirect(String.format("/pcm"));
                     return null;
                 }
@@ -62,6 +64,7 @@ public class PostNameRoute implements TemplateViewRoute {
                 }
             case "pcc":
                 if(samCenter.getSomething(username,"pcc")){
+                    response.cookie("usernamePCC",username);
                     response.redirect("/pcc");
                     halt();
                     return null;

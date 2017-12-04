@@ -57,7 +57,6 @@ public class WebServer {
     public static final String PCM_URL = "/pcm";
     public static final String PCC_URL = "/pcc";
     public static final String ADMIN_URL = "/admin";
-    public static final String REVIEW_SUBMISSION = "/reviewSubmissions";
 
     //
     // Attributes
@@ -109,15 +108,23 @@ public class WebServer {
         get(REGISTRATION_URL, new GetRegistrationRoute(), templateEngine);
 
         get(AUTHOR_URL, new GetAuthorRoute(samCenter), templateEngine);
-        get(PCM_URL, new GetPCMRoute(samCenter), templateEngine);
-        get(PCC_URL, new GetPCCRoute(samCenter), templateEngine);
-        get("/submittedPapers", new GetSubmittedPapersRoute(samCenter), templateEngine);
         get("/submitPaper", new GetSubmitPaperRoute(samCenter), templateEngine);
-        get("/assignPapers", new GetAssignPapersRoute(samCenter), templateEngine);
-        get("/pcmInterests", new GetPCMInterestsRoute(samCenter), templateEngine);
+        get("/reviewSubmissions", new GetReviewSubmissionsRoute(samCenter), templateEngine);
+
+        get(PCM_URL, new GetPCMRoute(samCenter), templateEngine);
+        get("/submittedPapers", new GetSubmittedPapersRoute(samCenter), templateEngine);
         get("/reviewPapers", new GetReviewPapersRoute(samCenter),templateEngine);
 
-        //get(ADMIN_URL, new GetAdminRoute(samCenter), templateEngine);
+        get(PCC_URL, new GetPCCRoute(samCenter), templateEngine);
+        get("/assignPapers", new GetAssignPapersRoute(samCenter), templateEngine);
+        get("/pcmInterests", new GetPCMInterestsRoute(samCenter), templateEngine);
+        get("/clearNotification", new GetPCCRoute(samCenter),templateEngine);
+
+
+        get(ADMIN_URL, new GetAdministratorRoute(samCenter), templateEngine);
+        get("/manageAccounts", new GetManageAccountsRoute(samCenter), templateEngine);
+        get("/manageDeadlines", new GetManageDeadlinesRoute(samCenter), templateEngine);
+
 
         //POST
         post("/name", new PostNameRoute(samCenter), templateEngine);
@@ -125,6 +132,5 @@ public class WebServer {
         post("/postPaper", new PostPaperRoute(samCenter), templateEngine);
         post("/reviewRequest", new PostReviewRequest(samCenter), templateEngine);
         post("/postAssignPapers", new PostAssignPapers(samCenter), templateEngine);
-        /*post("/reviewSubmissions", new );*/
     }
 }

@@ -2,12 +2,9 @@ package com.sparkSAM2018.ui;
 
 import com.sparkSAM2018.application.SAMCenter;
 
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import spark.*;
 
 import java.util.*;
-
-import static spark.Spark.halt;
 
 public class PostAssignPapers implements TemplateViewRoute {
 
@@ -30,14 +27,14 @@ public class PostAssignPapers implements TemplateViewRoute {
         String assigned_PCMS="";
         for(Object obj:selected_pcm) {
             assigned_PCMS=assigned_PCMS+(String)obj+"_";
-           // System.out.println("PCM assigned: " + assigned_PCMS);
+            // System.out.println("PCM assigned: " + assigned_PCMS);
         }
         response.cookie("assigned_PCMS",assigned_PCMS);
 
         System.out.println(request.queryParams("paper"));
         System.out.println(request.queryParams("assignedAuthor"));
-        vm.put("samCenter",samCenter);
 
+        vm.put("samCenter",samCenter);
         vm.put("papersSubmitted",samCenter.getPapersSubmitted());
         return new ModelAndView(vm, "assignPapers.ftl");
     }
