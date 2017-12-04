@@ -118,8 +118,6 @@ public class WebServer {
         get(PCC_URL, new GetPCCRoute(samCenter), templateEngine);
         get("/assignPapers", new GetAssignPapersRoute(samCenter), templateEngine);
         get("/pcmInterests", new GetPCMInterestsRoute(samCenter), templateEngine);
-        get("/clearNotification", new GetPCCRoute(samCenter),templateEngine);
-
 
         get(ADMIN_URL, new GetAdministratorRoute(samCenter), templateEngine);
         get("/manageAccounts", new GetManageAccountsRoute(samCenter), templateEngine);

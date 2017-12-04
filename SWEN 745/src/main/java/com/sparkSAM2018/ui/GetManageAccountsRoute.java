@@ -27,16 +27,35 @@ public class GetManageAccountsRoute implements TemplateViewRoute {
         Map<String, Object> vm = new HashMap<>();
         vm.put("title", GetHomeRoute.TITLE);
 
+        if(request.queryParams("username") != null){
+            for(int x = 0; x < samCenter.getAuthorUsernameList().size(); x++){
+                if(request.queryParams("username").equals(samCenter.getAuthorUsernameList().get(x).getAuthorUsername())){
+                    samCenter.getAuthorUsernameList().remove(samCenter.getAuthorUsernameList().get(x));
+                }
+            }
+            for(int x = 0; x < samCenter.getPCMUsernameList().size(); x++){
+                if(request.queryParams("username").equals(samCenter.getPCMUsernameList().get(x).getPCMName())){
+                    samCenter.getPCMUsernameList().remove(samCenter.getPCMUsernameList().get(x));
+                }
+            }
+            for(int x = 0; x < samCenter.getPCCUsernameList().size(); x++){
+                if(request.queryParams("username").equals(samCenter.getPCCUsernameList().get(x).getPCCName())){
+                    samCenter.getPCCUsernameList().remove(samCenter.getPCCUsernameList().get(x));
+                }
+            }
+        }
+
+
+
+
         List<String> aNames = new ArrayList<>();
         for(int x=0; x<samCenter.getAuthorUsernameList().size(); x++){
             aNames.add(samCenter.getAuthorUsernameList().get(x).getAuthorUsername());
         }
-
         List<String> pcc = new ArrayList<>();
         for(int x=0; x<samCenter.getPCCUsernameList().size(); x++){
             pcc.add(samCenter.getPCCUsernameList().get(x).getPCCName());
         }
-
         List<String> pcms = new ArrayList<>();
         for(int x=0; x<samCenter.getPCMUsernameList().size(); x++){
             pcms.add(samCenter.getPCMUsernameList().get(x).getPCMName());

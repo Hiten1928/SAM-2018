@@ -6,7 +6,9 @@ import spark.Request;
 import spark.Response;
 import spark.TemplateViewRoute;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GetPCMRoute implements TemplateViewRoute{
@@ -25,10 +27,21 @@ public class GetPCMRoute implements TemplateViewRoute{
         Map<String, Object> vm = new HashMap<>();
         vm.put("title", GetHomeRoute.TITLE);
 
-        //map to the actual pcm, not all pcms
-        if(!samCenter.getPcmNote().isEmpty()){
-            vm.put("notification", samCenter.getPcmNote().get(0).getMessage());
+        if(request.queryParams("notification") != null){
+            String notie = request.queryParams("notification");
+            for(int x = 0; x < samCenter.getPcmNote().size(); x++){
+                if(samCenter.getPcmNote().get(x).getMessage().equals(notie)){
+                    samCenter.getPcmNote().remove(samCenter.getPcmNote().get(x));
+                }
+            }
         }
+
+        List<String> noties = new ArrayList<>();
+        for(int x = 0; x < samCenter.getPcmNote().size(); x++){
+            noties.add(samCenter.getPcmNote().get(x).getMessage());
+        }
+
+        vm.put("notification",noties);
         return new ModelAndView(vm, "pcm.ftl");
     }
 }

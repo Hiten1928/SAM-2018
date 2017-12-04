@@ -24,34 +24,35 @@ public class GetReviewPapersRoute implements TemplateViewRoute {
         Map<String, Object> vm = new HashMap<>();
         vm.put("title", GetHomeRoute.TITLE);
 
+        String paper_assigned;
         ArrayList assigned_PCMS_list = new ArrayList();
-
         try {
             String pcms_Assigned = request.cookie("assigned_PCMS");
-            String paper_assigned = request.cookie("assigned_paper");
+            paper_assigned = request.cookie("assigned_paper");
 
             StringTokenizer st1 = new StringTokenizer(pcms_Assigned, "_");
             StringTokenizer st2 = new StringTokenizer(paper_assigned, "_");
             while (st1.hasMoreTokens()) {
                 assigned_PCMS_list.add(st1.nextElement());
-                //System.out.println(st1.nextElement());
             }
             while (st2.hasMoreTokens()) {
                 Object paper = st2.nextElement();
-                paper_assigned = (String) paper;
+                paper_assigned = (String)paper;
             }
             for (Object obj : assigned_PCMS_list)
-                System.out.println("in the list:" + (String) obj);
+                System.out.println("in the list:" + (String)obj);
 
             vm.put("PCM_list", assigned_PCMS_list);
             vm.put("paperName", paper_assigned);
         }
         catch(NullPointerException e){
+            System.out.println("still null");
             return new ModelAndView (vm,"review.ftl");
         }
 
         //Map<String, ArrayList> list_map = new HashMap<>();
         //list_map.put(paper_assigned,assigned_PCMS_list);
+        samCenter.getAssMap().put(paper_assigned,assigned_PCMS_list);
 
         return new ModelAndView (vm,"review.ftl");
     }
